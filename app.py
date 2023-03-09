@@ -11,7 +11,7 @@ import os
 openai.api_key =  os.getenv("APIKEY")
 
 
-
+explan = ""
 # from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 # import av
 # RTC_CONFIGURATION = RTCConfiguration(
@@ -104,5 +104,5 @@ with col2:
         except Exception as err:
             st.write(err )
             st.stop()
-            
+
 st.caption(explan)
