@@ -42,12 +42,12 @@ with col2:
 
         bytes_data = img_file_buffer.getvalue()
         cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-
+        st.write(cv2_img.shape)
         faces = face_cascade.detectMultiScale(cv2_img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
         for (x, y, w, h) in faces:
             # Extract the face region from the image
             face = cv2_img[y:y+h, x:x+w]
-
+        st.write(face.shape)
         img = cv2.resize(face, (224, 224), interpolation=cv2.INTER_AREA)
         img = np.asarray(img, dtype=np.float32).reshape(1, 224, 224, 3)
         img = (img / 127.5) - 1
