@@ -97,10 +97,12 @@ with col2:
                                                     temperature=0.5,
                                                     )
                 explan= reply.choices[0].text.strip()
-                st.caption(explan)
+                
                 st.stop()
 
         
         except Exception as err:
             st.write(err )
             st.stop()
+            
+st.caption(explan)
