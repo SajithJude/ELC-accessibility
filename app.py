@@ -18,7 +18,7 @@ openai.api_key =  os.getenv("APIKEY")
 #     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 # )
 
-# model = load_model('keras_model.h5', compile = False)
+model = load_model('keras_model.h5', compile = False)
 # lock = threading.Lock() 
 # img_container = {'img':None}
 
@@ -84,6 +84,7 @@ with col2:
 
         
             if st.button("Generate Care solution"):
+
                 inpt = "What are the cosmetics that I should use for a face covered with " +  {largest['name']} 
     # st.write(inpt)
 
