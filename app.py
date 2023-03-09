@@ -101,5 +101,5 @@ with col2:
 
         
         except Exception as err:
-            st.write(Exception )
+            st.write(err )
             st.stop()
