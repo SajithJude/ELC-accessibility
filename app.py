@@ -7,7 +7,7 @@ import openai
 import os
 
 # import os
-
+largest = {}
 openai.api_key =  os.getenv("APIKEY")
 
 
