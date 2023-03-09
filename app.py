@@ -11,7 +11,7 @@ import os
 openai.api_key =  os.getenv("APIKEY")
 
 
-explan = "Default Value"
+# explan = "Default Value"
 # from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 # import av
 # RTC_CONFIGURATION = RTCConfiguration(
@@ -97,7 +97,7 @@ with col2:
                                                     temperature=0.5,
                                                     )
                 explan= reply.choices[0].text.strip()
-                
+                st.write(explan)
                 st.stop()
 
         
@@ -105,4 +105,4 @@ with col2:
             st.write(err )
             st.stop()
 
-st.caption(explan)
+        # st.caption(explan)
