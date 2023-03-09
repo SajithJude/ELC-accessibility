@@ -32,7 +32,7 @@ darkspots = st.progress(0)
 st.write('Puffy Eyes')
 puffyeyes = st.progress(0)
 st.write('Wrinkles')
-wrinkles = st.progress(0)
+# wrinkles = st.progress(0)
 img_file_buffer = st.camera_input(f"Take a picture ")
 if img_file_buffer is not None:
 
@@ -45,7 +45,7 @@ if img_file_buffer is not None:
     
     darkspots = int(probabilities[0,0] * 100)
     puffyeyes = int(probabilities[0,1] * 100)
-    wrinkles = int(probabilities[1,1] * 100)
+    # wrinkles = int(probabilities[] * 100)
 
     darkspots.progress(darkspots)
     puffyeyes.progress(puffyeyes)
