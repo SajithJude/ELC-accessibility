@@ -34,16 +34,25 @@ with col1:
     st.write('Wrinkles')
     Wrinkles = st.progress(0)
 with col2:
+    face_cascade = = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
+    # Detect faces in the image
+
     img_file_buffer = st.camera_input(f"Take a picture ")
     if img_file_buffer is not None:
 
         bytes_data = img_file_buffer.getvalue()
         cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-        img = cv2.resize(cv2_img, (224, 224), interpolation=cv2.INTER_AREA)
+
+        faces = face_cascade.detectMultiScale(cv2_img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        for (x, y, w, h) in faces:
+            # Extract the face region from the image
+            face = cv2_img[y:y+h, x:x+w]
+
+        img = cv2.resize(face, (224, 224), interpolation=cv2.INTER_AREA)
         img = np.asarray(img, dtype=np.float32).reshape(1, 224, 224, 3)
         img = (img / 127.5) - 1
         probabilities = model.predict(img)
-        st.write(probabilities)
+        # st.write(probabilities)
         darkspots = int(probabilities[0,0] * 100)
         puffyeyes = int(probabilities[0,1] * 100)
         wrinkles = int(probabilities[0,2] * 100)
