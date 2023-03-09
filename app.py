@@ -35,7 +35,7 @@ with col1:
     Wrinkles = st.progress(0)
 with col2:
     img_file_buffer = st.camera_input(f"Take a picture ")
-    while img_file_buffer is None:
+    while img_file_buffer:
 
         bytes_data = img_file_buffer.getvalue()
         cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
