@@ -49,10 +49,10 @@ with col2:
                 # Extract the face region from the image
                 face = cv2_img[y:y+h, x:x+w]
             st.image(face)
-            img = cv2.resize(face, (100, 100), interpolation=cv2.INTER_AREA)
+            img = cv2.resize(face, (99, 99), interpolation=cv2.INTER_AREA)
             st.image(img)
-            img = np.asarray(img, dtype=np.float32).reshape(1, 100, 100, 3)
-            img = (img / 127.5) - 1
+            img = np.asarray(img, dtype=np.float32).reshape(1, 99, 99, 3)
+            img = (img / 50) - 1
             probabilities = model.predict(img)
             # st.write(probabilities)
             darkspots = int(probabilities[0,0] * 100)
