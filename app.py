@@ -45,7 +45,7 @@ if img_file_buffer is not None:
     
     darkspots = int(probabilities[0,0] * 100)
     puffyeyes = int(probabilities[0,1] * 100)
-    wrinkles = int(probabilities[1,0] * 100)
+    wrinkles = int(probabilities[1,1] * 100)
 
     darkspots.progress(darkspots)
     puffyeyes.progress(puffyeyes)
