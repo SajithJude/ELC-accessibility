@@ -38,7 +38,7 @@ if img_file_buffer is not None:
 
     bytes_data = img_file_buffer.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-    img = cv2.resize(img, (224, 224), interpolation=cv2.INTER_AREA)
+    img = cv2.resize(cv2_img, (224, 224), interpolation=cv2.INTER_AREA)
     img = np.asarray(img, dtype=np.float32).reshape(1, 224, 224, 3)
     img = (img / 127.5) - 1
     probabilities = model.predict(img)
