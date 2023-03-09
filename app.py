@@ -33,7 +33,7 @@ st.write('Puffy Eyes')
 puffyeyes = st.progress(0)
 st.write('Wrinkles')
 wrinkles = st.progress(0)
-
+img_file_buffer = st.camera_input(f"Take a picture of {classes[0]} or {classes[1]}")
 if img_file_buffer is not None:
 
     bytes_data = img_file_buffer.getvalue()
