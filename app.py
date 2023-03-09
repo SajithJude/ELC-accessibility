@@ -98,7 +98,8 @@ with col2:
                 explan= reply.choices[0].text.strip()
                 st.caption(explan)
                 st.stop()
+
         
-            except:
-                st.write("No face detected move your face away from cam")
-                st.stop()
+        except:
+            st.write("No face detected move your face away from cam")
+            st.stop()
