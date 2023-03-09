@@ -3,15 +3,24 @@ import threading
 import cv2
 import numpy as np
 from keras.models import load_model
-from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
-import av
-RTC_CONFIGURATION = RTCConfiguration(
-    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
-)
+import openai 
+import os
 
-model = load_model('keras_model.h5', compile = False)
-lock = threading.Lock() 
-img_container = {'img':None}
+# import os
+
+openai.api_key =  os.getenv("APIKEY")
+
+
+
+# from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
+# import av
+# RTC_CONFIGURATION = RTCConfiguration(
+#     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+# )
+
+# model = load_model('keras_model.h5', compile = False)
+# lock = threading.Lock() 
+# img_container = {'img':None}
 
 # def video_frame_callback(frame):
 #     img = frame.to_ndarray(format="bgr24")
@@ -62,6 +71,29 @@ with col2:
             Darkspots.progress(darkspots)
             Puffyeyes.progress(puffyeyes)
             Wrinkles.progress(wrinkles)
+
+            if darkspots >= puffyeyes and darkspots >= wrinkles:
+                largest = {'name': 'darkspots', 'value': darkspots}
+            elif puffyeyes >= darkspots and puffyeyes >= wrinkles:
+                largest = {'name': 'puffyeyes', 'value': puffyeyes}
+            else:
+                largest = {'name': 'wrinkles', 'value': wrinkles}
+
+            if st.button("Generate Care solution"):
+                inpt = " What are the cosmetics that I should use for a face covered with " +  {largest['name']} .
+    # st.write(inpt)
+
+                reply = openai.Completion.create(
+                                                    engine="text-davinci-003",
+                                                    prompt=inpt,
+                                                    max_tokens=3600,
+                                                    n=1,
+                                                    stop=None,
+                                                    temperature=0.5,
+                                                    )
+                explan= reply.choices[0].text.strip()
+                st.caption(explan)
+                st.stop()
         except:
             st.write("No face detected move your face away from cam")
             st.stop()
