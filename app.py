@@ -20,8 +20,8 @@ img_container = {'img':None}
 #     return frame
 
 
-st.title('Is it Pikachu or Eevee!?')
-st.subheader('The image detection tool you definitely do not need in your life')
+# st.title('Is it Pikachu or Eevee!?')
+# st.subheader('The image detection tool you definitely do not need in your life')
 
 col1, col2 = st.columns(2)
 
