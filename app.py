@@ -66,7 +66,7 @@ with col2:
             st.write(probabilities)
         except:
             st.write("No face detected move your face away from cam")
-            st.stop()
+            # st.stop()
 
             darkspots = int(probabilities[0,0] * 100)
             puffyeyes = int(probabilities[0,1] * 100)
