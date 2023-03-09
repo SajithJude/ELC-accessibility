@@ -13,20 +13,20 @@ model = load_model('keras_model.h5', compile = False)
 lock = threading.Lock() 
 img_container = {'img':None}
 
-def video_frame_callback(frame):
-    img = frame.to_ndarray(format="bgr24")
-    with lock:
-        img_container['img'] = img
-    return frame
+# def video_frame_callback(frame):
+#     img = frame.to_ndarray(format="bgr24")
+#     with lock:
+#         img_container['img'] = img
+#     return frame
 
 
 st.title('Is it Pikachu or Eevee!?')
 st.subheader('The image detection tool you definitely do not need in your life')
 
-ctx = webrtc_streamer(key="example", 
-                video_frame_callback=video_frame_callback,
-                rtc_configuration = RTC_CONFIGURATION,
-                mode=WebRtcMode.SENDRECV)
+# ctx = webrtc_streamer(key="example", 
+#                 video_frame_callback=video_frame_callback,
+#                 rtc_configuration = RTC_CONFIGURATION,
+#                 mode=WebRtcMode.SENDRECV)
 st.write('Dark spots')
 darkspots = st.progress(0)
 st.write('Puffy Eyes')
@@ -34,11 +34,10 @@ puffyeyes = st.progress(0)
 st.write('Wrinkles')
 wrinkles = st.progress(0)
 
-while ctx.state.playing:
-    with lock: 
-        img = img_container['img']
-    if img is None:
-        continue
+if img_file_buffer is not None:
+
+    bytes_data = img_file_buffer.getvalue()
+    cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
     img = cv2.resize(img, (224, 224), interpolation=cv2.INTER_AREA)
     img = np.asarray(img, dtype=np.float32).reshape(1, 224, 224, 3)
     img = (img / 127.5) - 1
