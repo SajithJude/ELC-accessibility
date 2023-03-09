@@ -27,11 +27,12 @@ ctx = webrtc_streamer(key="example",
                 video_frame_callback=video_frame_callback,
                 rtc_configuration = RTC_CONFIGURATION,
                 mode=WebRtcMode.SENDRECV)
-st.write('Pikachu')
-pikachu = st.progress(0)
-st.write('Eevee')
-eevee = st.progress(0)
-
+st.write('Dark spots')
+darkspots = st.progress(0)
+st.write('Puffy Eyes')
+puffyeyes = st.progress(0)
+st.write('Wrinkles')
+wrinkles = st.progress(0)
 
 while ctx.state.playing:
     with lock: 
@@ -43,7 +44,10 @@ while ctx.state.playing:
     img = (img / 127.5) - 1
     probabilities = model.predict(img)
     
-    pikachu_p = int(probabilities[0,0] * 100)
-    eevee_p = int(probabilities[0,1] * 100)
-    pikachu.progress(pikachu_p)
-    eevee.progress(eevee_p)
+    darkspots = int(probabilities[0,0,0] * 100)
+    puffyeyes = int(probabilities[0,1,0] * 100)
+    wrinkles = int(probabilities[0,0,1] * 100)
+
+    darkspots.progress(darkspots)
+    puffyeyes.progress(puffyeyes)
+    wrinkles.progress(wrinkles)
