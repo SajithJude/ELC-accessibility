@@ -64,9 +64,7 @@ with col2:
             img = (img / 127.5) - 1
             probabilities = model.predict(img)
             st.write(probabilities)
-        except:
-            st.write("No face detected move your face away from cam")
-            # st.stop()
+        
 
             darkspots = int(probabilities[0,0] * 100)
             puffyeyes = int(probabilities[0,1] * 100)
@@ -84,7 +82,7 @@ with col2:
             Puffyeyes.progress(puffyeyes)
             Wrinkles.progress(wrinkles)
 
-         
+        
             if st.button("Generate Care solution"):
                 inpt = "What are the cosmetics that I should use for a face covered with " +  {largest['name']} 
     # st.write(inpt)
@@ -101,3 +99,6 @@ with col2:
                 st.caption(explan)
                 st.stop()
         
+            except:
+            st.write("No face detected move your face away from cam")
+            st.stop()
