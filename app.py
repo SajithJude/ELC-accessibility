@@ -100,5 +100,5 @@ with col2:
                 st.stop()
         
             except:
-            st.write("No face detected move your face away from cam")
-            st.stop()
+                st.write("No face detected move your face away from cam")
+                st.stop()
