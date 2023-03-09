@@ -34,7 +34,7 @@ with col1:
     st.write('Wrinkles')
     Wrinkles = st.progress(0)
 with col2:
-    face_cascade = = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
+    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
     # Detect faces in the image
 
     img_file_buffer = st.camera_input(f"Take a picture ")
