@@ -26,6 +26,7 @@ st.subheader('The image detection tool you definitely do not need in your life')
 col1, col2 = st.columns(2)
 
 with col1:
+    st.subheader("Skin Analysis")
     st.write('Dark spots')
     Darkspots = st.progress(0)
     st.write('Puffy Eyes')
