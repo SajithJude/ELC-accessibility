@@ -42,7 +42,7 @@ if img_file_buffer is not None:
     img = np.asarray(img, dtype=np.float32).reshape(1, 224, 224, 3)
     img = (img / 127.5) - 1
     probabilities = model.predict(img)
-    
+    st.write(probabilities)
     darkspots = int(probabilities[0,0] * 100)
     puffyeyes = int(probabilities[0,1] * 100)
     # wrinkles = int(probabilities[] * 100)
