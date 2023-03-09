@@ -42,7 +42,7 @@ with col2:
 
         bytes_data = img_file_buffer.getvalue()
         cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-        st.image(cv2_img)
+        # st.image(cv2_img)
         try:
             faces = face_cascade.detectMultiScale(cv2_img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
             for (x, y, w, h) in faces:
@@ -50,6 +50,7 @@ with col2:
                 face = cv2_img[y:y+h, x:x+w]
             st.image(face)
             img = cv2.resize(face, (224, 224), interpolation=cv2.INTER_AREA)
+            st.image(img)
             img = np.asarray(img, dtype=np.float32).reshape(1, 224, 224, 3)
             img = (img / 127.5) - 1
             probabilities = model.predict(img)
