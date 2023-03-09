@@ -11,22 +11,8 @@ import os
 openai.api_key =  os.getenv("APIKEY")
 
 
-# explan = "Default Value"
-# from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
-# import av
-# RTC_CONFIGURATION = RTCConfiguration(
-#     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
-# )
 
 model = load_model('keras_model.h5', compile = False)
-# lock = threading.Lock() 
-# img_container = {'img':None}
-
-# def video_frame_callback(frame):
-#     img = frame.to_ndarray(format="bgr24")
-#     with lock:
-#         img_container['img'] = img
-#     return frame
 
 
 # st.title('Is it Pikachu or Eevee!?')
@@ -42,6 +28,12 @@ with col1:
     Puffyeyes = st.progress(0)
     st.write('Wrinkles')
     Wrinkles = st.progress(0)
+
+    with st.expander("Links"):
+        if st.button("Show Links"):
+
+            st.table(largest)
+
 with col2:
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
     # Detect faces in the image
