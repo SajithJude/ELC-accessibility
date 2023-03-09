@@ -4,3 +4,4 @@ tensorflow
 opencv-python-headless
 ffmpeg
 streamlit-webrtc
+Pillow
