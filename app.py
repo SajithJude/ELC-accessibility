@@ -85,7 +85,7 @@ with col2:
         
             if st.button("Generate Care solution"):
 
-                inpt = "What are the cosmetics that I should use for a face covered with " +  {largest['name']} 
+                inpt = "What are the cosmetics that I should use for a face covered with " +  str({largest['name']} )
     # st.write(inpt)
 
                 reply = openai.Completion.create(
