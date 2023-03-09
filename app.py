@@ -11,7 +11,7 @@ import os
 openai.api_key =  os.getenv("APIKEY")
 
 
-explan = ""
+explan = "Default Value"
 # from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 # import av
 # RTC_CONFIGURATION = RTCConfiguration(
