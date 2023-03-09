@@ -43,9 +43,9 @@ if img_file_buffer is not None:
     img = (img / 127.5) - 1
     probabilities = model.predict(img)
     
-    darkspots = int(probabilities[0,0,0] * 100)
-    puffyeyes = int(probabilities[0,1,0] * 100)
-    wrinkles = int(probabilities[0,0,1] * 100)
+    darkspots = int(probabilities[0,0] * 100)
+    puffyeyes = int(probabilities[0,1] * 100)
+    wrinkles = int(probabilities[1,0] * 100)
 
     darkspots.progress(darkspots)
     puffyeyes.progress(puffyeyes)
