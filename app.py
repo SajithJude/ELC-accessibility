@@ -1,10 +1,9 @@
 import streamlit as st
 
 import streamlit as st
-from streamlit.components.v1 import html
-
+import streamlit.components.v1 as components
 # Define the HTML content
-html_content = """
+components.html("""
   
 <button type="button" onclick="init()">Start</button>
 <div id="webcam-container"></div>
@@ -65,8 +64,4 @@ html_content = """
     }
 </script>
 
-"""
-
-# Display the HTML content using components.html
-html_component = html(html_content)
-st.components.v1.html_component(html_component)
+""",  height=600,)
