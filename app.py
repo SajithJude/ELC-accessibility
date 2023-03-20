@@ -132,6 +132,6 @@ with st.expander("Goroming tips for detected face"):
             st.stop()
 
 
-if st.button("Generate Care solution"):
+# if st.button("Generate Care solution"):
 
               
