@@ -35,26 +35,7 @@ with col1:
     st.write('Wrinkles')
     Wrinkles = st.progress(0)
 
-    with st.expander("Links"):
-        if st.button("Show Links"):
-            eyes = pd.read_csv("dataELC - eyesdata.csv")
-            largest = st.session_state["largest"] 
-
-
-            ulla = "Select the products that can be used to cover" +  str(largest) + " out of the following cosmetic products with the relevant urls in the adjacent column and insert them into a table :" + str(eyes) 
-    # st.write(inpt)
-
-            reply = openai.Completion.create(
-                                                    engine="text-davinci-003",
-                                                    prompt=ulla,
-                                                    max_tokens=1200,
-                                                    n=1,
-                                                    stop=None,
-                                                    temperature=0.5,
-                                                    )
-            veliya= reply.choices[0].text.strip()
-            st.write(veliya)
-            st.stop()
+    
 
             # st.table(largest)
 
@@ -104,12 +85,41 @@ with col2:
             Wrinkles.progress(wrinkles)
 
         
-            if st.button("Generate Care solution"):
+        except Exception as err:
+            st.write(err )
+            st.stop()
 
-                inpt = "What are the cosmetics that I should use for a face covered with " +  str({largest['name']} )
+with st.expander("Product links and Names"):
+        if st.button("Show Links"):
+            eyes = pd.read_csv("dataELC - eyesdata.csv")
+            largest = st.session_state["largest"] 
+
+
+            ulla = "Select the products that can be used to cover" +  str(largest) + " out of the following cosmetic products with the relevant urls in the adjacent column and insert them into a table :" + str(eyes) 
     # st.write(inpt)
 
-                reply = openai.Completion.create(
+            reply = openai.Completion.create(
+                                                    engine="text-davinci-003",
+                                                    prompt=ulla,
+                                                    max_tokens=1200,
+                                                    n=1,
+                                                    stop=None,
+                                                    temperature=0.5,
+                                                    )
+            veliya= reply.choices[0].text.strip()
+            st.write(veliya)
+            st.stop()
+
+
+
+
+with st.expander("Goroming tips for detected face"):
+        if st.button("Generate Tips"):
+
+
+            inpt = "Generate Grooming tips on how to apply the following  " +  str({largest['name']} )
+
+            reply = openai.Completion.create(
                                                     engine="text-davinci-003",
                                                     prompt=inpt,
                                                     max_tokens=3600,
@@ -117,20 +127,11 @@ with col2:
                                                     stop=None,
                                                     temperature=0.5,
                                                     )
-                explan= reply.choices[0].text.strip()
-                st.write(explan)
-                st.stop()
-                
-                
-               
-                
-
-
-
-
-        
-        except Exception as err:
-            st.write(err )
+            explan= reply.choices[0].text.strip()
+            st.write(explan)
             st.stop()
 
-        # st.caption(explan)
+
+if st.button("Generate Care solution"):
+
+              
