@@ -41,7 +41,7 @@ with col1:
             largest = st.session_state["largest"] 
 
 
-            ulla = "Extract the links of the product I need to use for a covered with " +  str(largest) + " out of the following products in these tables  :" + str(eyes) 
+            ulla = "Extract the links of the product I need to use to cover" +  str(largest) + " out of the following cosmetic products  :" + str(eyes) 
     # st.write(inpt)
 
             reply = openai.Completion.create(
