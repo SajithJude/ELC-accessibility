@@ -41,7 +41,7 @@ with col1:
             largest = st.session_state["largest"] 
 
 
-            ulla = "Select the products that can be used to cover" +  str(largest) + " out of the following cosmetic products with the relevant navTargetLink column and insert them into a table:" + str(eyes) 
+            ulla = "Select the products that can be used to cover" +  str(largest) + " out of the following cosmetic products with the relevant urls in the adjacent column and insert them into a table :" + str(eyes) 
     # st.write(inpt)
 
             reply = openai.Completion.create(
