@@ -49,7 +49,7 @@ with col1:
             reply = openai.Completion.create(
                                                     engine="text-davinci-003",
                                                     prompt=ulla,
-                                                    max_tokens=3600,
+                                                    max_tokens=1200,
                                                     n=1,
                                                     stop=None,
                                                     temperature=0.5,
