@@ -16,7 +16,7 @@ import pandas as pd
 largest = {}
 openai.api_key =  os.getenv("APIKEY")
 
-sessionstate = st.session_state()
+sessionstate = st.session_state
 
 model = load_model('keras_model.h5', compile = False)
 
