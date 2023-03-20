@@ -16,7 +16,7 @@ st.write("We built Beautify.ai using a combination of machine learning algorithm
 
 st.subheader("Challenges we ran into")
 
-st.write("One of the biggest challenges we faced was ensuring that the app was accessible and easy to use for individuals with neurogenerative disorders. We conducted extensive user testing and made many design iterations based on feedback from our testers. We also had to carefully consider ethical and privacy concerns when designing the app.")
+st.write("One of the biggest challenges we faced was Collecting the data set and scraping web data")
 
 
 st.subheader("Accomplishments that we're proud of")
