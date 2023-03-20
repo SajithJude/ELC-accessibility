@@ -107,6 +107,7 @@ with st.expander("Product links and Names"):
                                                     temperature=0.5,
                                                     )
             veliya= reply.choices[0].text.strip()
+            st.session_state["veliya"] = veliya
             st.write(veliya)
             # st.stop()
 
@@ -114,14 +115,12 @@ with st.expander("Product links and Names"):
 
 
 with st.expander("Grooming tips for detected face"):
-
-    if st.button("Generate Tips"):
-
+        if st.button("Generate Tips"):
 
 
-        inpt = "Generate Grooming tips on how to apply the following  " +  str({largest['name']} )
+            inpt = "Generate Grooming tips on how to apply the following  " +  str(st.session_state["veliya"])
 
-        reply = openai.Completion.create(
+            reply = openai.Completion.create(
                                                     engine="text-davinci-003",
                                                     prompt=inpt,
                                                     max_tokens=3600,
@@ -129,9 +128,9 @@ with st.expander("Grooming tips for detected face"):
                                                     stop=None,
                                                     temperature=0.5,
                                                     )
-        explan= reply.choices[0].text.strip()
-        st.write(explan)
-        st.stop()
+            explan= reply.choices[0].text.strip()
+            st.write(explan)
+            st.stop()
 
 
 # if st.button("Generate Care solution"):
