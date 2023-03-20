@@ -2,7 +2,7 @@ import streamlit as st
 
 st.subheader("Inspiration")
 
-st.write("Many people, including those with neurogenerative disorders like OCD, ADHD, and PTSD, struggle with decision-making when it comes to beauty and makeup products. The overwhelming number of options, combined with the pressure to choose the "right" product, can be paralyzing. We wanted to create an app that would use AI and image processing to suggest the exact product needed, reducing decision fatigue and making the process of selecting and purchasing products easier and less overwhelming.")
+st.write("Many people including those with neurogenerative disorders like OCD, ADHD, and PTSD, struggle with decision-making when it comes to beauty and makeup products. The overwhelming number of options, combined with the pressure to choose the right product, can be paralyzing. We wanted to create an app that would use AI and image processing to suggest the exact product needed, reducing decision fatigue and making the process of selecting and purchasing products easier and less overwhelming.")
 
 
 st.subheader("What it does")
