@@ -8,6 +8,9 @@ import os
 import pandas as pd
 
 
+eyes = pd.read_csv("dataELC - eyesdata.csv")
+face = pd.read_csv("dataELC - facedata.csv")
+lips = pd.read_csv("dataELC - lipsdata.csv")
 
 
 
@@ -96,6 +99,26 @@ with col2:
                 explan= reply.choices[0].text.strip()
                 st.write(explan)
                 st.stop()
+                
+                
+                ulla = "Extract the links of the product I need to use for a covered with " +  str({largest['name']} ) + " out of the following products in these tables  :" + str(lips) + str(face) + str(eyes) 
+    # st.write(inpt)
+
+                reply = openai.Completion.create(
+                                                    engine="text-davinci-003",
+                                                    prompt=ulla,
+                                                    max_tokens=3600,
+                                                    n=1,
+                                                    stop=None,
+                                                    temperature=0.5,
+                                                    )
+                veliya= reply.choices[0].text.strip()
+                st.write(veliya)
+                st.stop()
+                
+
+
+
 
         
         except Exception as err:
