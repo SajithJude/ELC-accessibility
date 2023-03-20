@@ -116,10 +116,7 @@ with st.expander("Product links and Names"):
 
 with st.expander("Grooming tips for detected face"):
         if st.button("Generate Tips"):
-
-
             inpt = "Generate Grooming tips on how to apply the following  " +  str(st.session_state["veliya"])
-
             reply = openai.Completion.create(
                                                     engine="text-davinci-003",
                                                     prompt=inpt,
