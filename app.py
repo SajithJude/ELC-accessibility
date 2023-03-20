@@ -39,8 +39,22 @@ with col1:
 
     with st.expander("Links"):
         if st.button("Show Links"):
+            ulla = "Extract the links of the product I need to use for a covered with " +  str({largest['name']} ) + " out of the following products in these tables  :" + str(lips) + str(face) + str(eyes) 
+    # st.write(inpt)
 
-            st.table(largest)
+            reply = openai.Completion.create(
+                                                    engine="text-davinci-003",
+                                                    prompt=ulla,
+                                                    max_tokens=3600,
+                                                    n=1,
+                                                    stop=None,
+                                                    temperature=0.5,
+                                                    )
+            veliya= reply.choices[0].text.strip()
+            st.write(veliya)
+            st.stop()
+
+            # st.table(largest)
 
 with col2:
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
@@ -101,20 +115,7 @@ with col2:
                 st.stop()
                 
                 
-                ulla = "Extract the links of the product I need to use for a covered with " +  str({largest['name']} ) + " out of the following products in these tables  :" + str(lips) + str(face) + str(eyes) 
-    # st.write(inpt)
-
-                reply = openai.Completion.create(
-                                                    engine="text-davinci-003",
-                                                    prompt=ulla,
-                                                    max_tokens=3600,
-                                                    n=1,
-                                                    stop=None,
-                                                    temperature=0.5,
-                                                    )
-                veliya= reply.choices[0].text.strip()
-                st.write(veliya)
-                st.stop()
+               
                 
 
 
