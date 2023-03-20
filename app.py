@@ -8,9 +8,7 @@ import os
 import pandas as pd
 
 
-eyes = pd.read_csv("dataELC - eyesdata.csv")
-face = pd.read_csv("dataELC - facedata.csv")
-lips = pd.read_csv("dataELC - lipsdata.csv")
+
 
 
 
@@ -39,6 +37,9 @@ with col1:
 
     with st.expander("Links"):
         if st.button("Show Links"):
+            eyes = pd.read_csv("dataELC - eyesdata.csv")
+            face = pd.read_csv("dataELC - facedata.csv")
+            lips = pd.read_csv("dataELC - lipsdata.csv")
             ulla = "Extract the links of the product I need to use for a covered with " +  str({largest['name']} ) + " out of the following products in these tables  :" + str(lips) + str(face) + str(eyes) 
     # st.write(inpt)
 
