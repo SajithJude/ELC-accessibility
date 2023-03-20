@@ -16,7 +16,7 @@ import pandas as pd
 largest = {}
 openai.api_key =  os.getenv("APIKEY")
 
-
+sessionstate = st.session_state()
 
 model = load_model('keras_model.h5', compile = False)
 
@@ -40,6 +40,9 @@ with col1:
             eyes = pd.read_csv("dataELC - eyesdata.csv")
             face = pd.read_csv("dataELC - facedata.csv")
             lips = pd.read_csv("dataELC - lipsdata.csv")
+            largest = sessionstate["largest"] 
+
+
             ulla = "Extract the links of the product I need to use for a covered with " +  str({largest['name']} ) + " out of the following products in these tables  :" + str(lips) + str(face) + str(eyes) 
     # st.write(inpt)
 
@@ -87,10 +90,15 @@ with col2:
 
             if darkspots >= puffyeyes and darkspots >= wrinkles:
                 largest = {'name': 'darkspots', 'value': darkspots}
+                sessionstate["largest"] = largest
             elif puffyeyes >= darkspots and puffyeyes >= wrinkles:
                 largest = {'name': 'puffyeyes', 'value': puffyeyes}
+                sessionstate["largest"] = largest
+
             else:
                 largest = {'name': 'wrinkles', 'value': wrinkles}
+                sessionstate["largest"] = largest
+
 
 
             Darkspots.progress(darkspots)
